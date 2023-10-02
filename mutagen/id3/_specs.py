@@ -486,7 +486,7 @@ class EncodedTextSpec(Spec):
             raise SpecError(e)
 
     def validate(self, frame, value):
-        return str(value)
+        return value
 
 
 class MultiSpec(Spec):
