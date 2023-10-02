@@ -887,6 +887,9 @@ def encode_endian(text: str, encoding: str,
 
     encoding = codecs.lookup(encoding).name
 
+    if isinstance(text, bytes):
+        return text
+
     if encoding == "utf-16":
         if le:
             return codecs.BOM_UTF16_LE + text.encode("utf-16-le", errors)

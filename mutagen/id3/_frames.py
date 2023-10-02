@@ -401,7 +401,9 @@ class TextFrame(Frame):
         return str(self).encode('utf-8')
 
     def __str__(self):
-        return u'\u0000'.join(self.text)
+        if isinstance(self.text, str):
+            return '\u0000'.join(self.text)
+        return str(self.text)
 
     def __eq__(self, other):
         if isinstance(other, bytes):
