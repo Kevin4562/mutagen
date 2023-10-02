@@ -522,6 +522,8 @@ class MultiSpec(Spec):
     def validate(self, frame, value):
         if self.sep and isinstance(value, str):
             value = value.split(self.sep)
+        if self.sep and isinstance(value, bytes):
+            value = value.split(self.sep.encode('utf8'))
         if isinstance(value, list):
             if len(self.specs) == 1:
                 return [self.specs[0].validate(frame, v) for v in value]
